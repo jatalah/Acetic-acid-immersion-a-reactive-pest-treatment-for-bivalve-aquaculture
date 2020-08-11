@@ -1,6 +1,6 @@
 # Acetic acid immersion a reactive pest treatment for bivalve aquaculture
 
-Patrick L. Cahilla*, Javier Atalah<sup>a</sup>, Shaun Cunningham<sup>a</sup>, Andrew Day<sup>b</sup>, Lauren Fletcher<sup>a</sup>, Paul South<sup>a</sup>, Barrie Forrest<sup>a</sup>**, Grant Hopkins<sup>a</sup> 
+Patrick L. Cahill<sup>a</sup>*, Javier Atalah<sup>a</sup>, Shaun Cunningham<sup>a</sup>, Andrew Day<sup>b</sup>, Lauren Fletcher<sup>a</sup>, Paul South<sup>a</sup>, Barrie Forrest<sup>a</sup>**, Grant Hopkins<sup>a</sup> 
 
 <sup>a</sup>Cawthron Institute, 98 Halifax St East, Nelson 7010, New Zealand 
 <sup>b</sup>Shellfish Production and Technology New Zealand Ltd, P.O. Box 10022, The Wood, Nelson 7047, New Zealand
