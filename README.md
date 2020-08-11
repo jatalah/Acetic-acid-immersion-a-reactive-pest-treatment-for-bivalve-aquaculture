@@ -5,7 +5,7 @@ Patrick L. Cahilla*, Javier Atalah<sup>a</sup>, Shaun Cunningham<sup>a</sup>, An
 <sup>a</sup>Cawthron Institute, 98 Halifax St East, Nelson 7010, New Zealand 
 <sup>b</sup>Shellfish Production and Technology New Zealand Ltd, P.O. Box 10022, The Wood, Nelson 7047, New Zealand
 
-*Corresponding author; email: Patrick.Cahill@cawthron.org.nz 
+*Corresponding author; email: Patrick.Cahill@cawthron.org.nz<br>
 **now Salt Ecology, 4 Wastney Tce, Nelson 7010, New Zealand
 
 ### Submitted to the journal Aquaculture
