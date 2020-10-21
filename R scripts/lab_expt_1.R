@@ -67,6 +67,38 @@ ggsave(
   height = 2.5
 )
 
+### Pool Time in bath
+lab1_plot_surv_pooled <- 
+  ggplot(lab_1,
+       aes(
+         x = Acetic_acid,
+         y = survival
+       )) +
+  # facet_grid(Time_in_bath~ size, scales = 'free_x') +
+  facet_wrap(~ size, scales = 'free_x') +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    position = position_dodge(width = .9),
+    color = 1
+  ) +
+  stat_summary(
+    fun.data = mean_se,
+    position = position_dodge(width = .9),
+    geom = "errorbar",
+    width = 0.2
+  ) +
+  scale_fill_grey(name = "Bath time") +
+  labs(x= "Acetic acid", y = 'Survival (%)') +
+  geom_hline(yintercept = 75, lty = 2)
+
+ggsave(
+  plot = lab1_plot_surv_pooled,
+  filename = "figures/lab_1/lab1_plot_surv_pooled.svg",
+  width = 8,
+  height = 2.5
+)
+
 # ANOVA survival------------
 m1 <- lm(survival ~ Time_in_bath * size * Acetic_acid, data  = lab_1)
 anova(m1)
@@ -104,7 +136,9 @@ lab1_regression_plot <-
   labs(x = 'Acetic acid concentration (%)', y = "Viability (%)") +
   stat_poly_eq(aes(label =  stat(rr.label)),
                formula = y~x, parse = TRUE, label.x = "left",label.y ="bottom")
-lab1_regression_plot
+lab1_regression_plo
+
+
 # save plot bm plot -----
 ggsave(
   plot = lab1_regression_plot,
@@ -119,3 +153,56 @@ tidy(summary(m1_reg)) %>%
   write_csv('tables/lab_1/lab1_regression_coef_table.csv')
 tidy(anova(m1_reg)) %>% 
   write_csv('tables/lab_1/lab1_regression_summary_table.csv')
+
+# mean +-se plots-----
+mean_se_plot <- 
+  ggplot(lab_1,
+       aes(
+         x = aa,
+         y = survival,
+         color = Time_in_bath,
+         group = Time_in_bath,
+         shape = Time_in_bath
+       )) +
+  
+  stat_summary(fun = mean, geom = 'line', aes(lty = Time_in_bath), color = 'gray20') +
+  stat_summary(fun.data = "mean_se",
+               size = .5, color = 'gray20') +
+  theme_javier() +
+  scale_linetype(name = "Time in bath") +
+  scale_shape_manual(values = c(1,0,16), name = "Time in bath") +
+  labs(x = 'Acetic acid concentration (%)', y = "Viability (%)") + 
+  facet_wrap(~ size)
+
+ggsave(
+  plot = mean_se_plot,
+  filename = "figures/lab_1/lab1_mean_se_plot.svg",
+  width = 12,
+  height = 4
+)
+
+
+
+# Time in bath handling effect---
+ggplot(lab_1,
+       aes(x = Time_in_bath,
+           y = survival)) +
+  stat_summary(
+    fun = mean,
+    geom = "bar",
+    position = position_dodge(width = .9),
+    color = 1
+  ) +
+  stat_summary(
+    fun.data = mean_se,
+    position = position_dodge(width = .9),
+    geom = "errorbar",
+    width = 0.2
+  ) +
+  scale_fill_grey(name = "Bath time") +
+  labs(x = "Acetic acid", y = 'Survival (%)')
+
+
+lab_1 %>%
+  group_by(Time_in_bath) %>%
+  summarise_at(vars(survival), .funs = list(mean = mean, se = se))

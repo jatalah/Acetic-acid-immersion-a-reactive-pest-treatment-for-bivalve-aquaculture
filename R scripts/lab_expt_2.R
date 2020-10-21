@@ -11,7 +11,7 @@ theme_set(theme_javier())
 lab_2_long <-
   read_excel('data/Laboratory 2.xlsx') %>%
   mutate(Treat = paste(Time_in_bath , `time_air-drying`, sep = " | "),
-         Treatment = fct_relevel(if_else(Acetic_acid ==0, "Control", Treat), "Control"), #mergered controls
+         Treatment = fct_relevel(if_else(Acetic_acid ==0, "Control", Treat), "Control"), #merge controls
          C_vs_T = fct_relevel(if_else(Acetic_acid ==0, "Control", "Treated"), "Control")) %>%
   gather(taxa, migrated,  Perna_migrated:Mytilus_migrated) %>%
   mutate(taxa = str_remove(taxa, "_migrated"),
